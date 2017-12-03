@@ -8,7 +8,7 @@ all:
 	sleep 1
 	sudo ./read.o
 
-clear:
+clean:
 	sudo ./unlink.o
 
 	rm -f *.o

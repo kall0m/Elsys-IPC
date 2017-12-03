@@ -6,7 +6,7 @@
 struct cyclic_buf
 {
 	volatile uint64_t pos;
-	volatile int array[4096];
+	volatile int buffer[128][4096]; //512MB (jitter)
 };
 
 #endif

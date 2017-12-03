@@ -14,5 +14,5 @@ process:
 
 	gnome-terminal -x sh -c './process.o; sleep 0.5'
 
-clear:
+clean:
 	rm -f *.o namedPipe a.out

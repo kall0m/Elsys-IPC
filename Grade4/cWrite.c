@@ -10,7 +10,7 @@
 
 int main()
 {
-	int memFd = shm_open("simple_memory", O_CREAT | O_RDWR, S_IRWXO);
+	int memFd = shm_open("simple_memory", O_CREAT | O_RDWR, S_IRWXU);
 	if(memFd == -1) {
 		perror("Can't open file");
 		return 1;

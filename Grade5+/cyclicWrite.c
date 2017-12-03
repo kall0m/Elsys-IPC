@@ -12,7 +12,7 @@
 
 int main()
 {
-	int memFd = shm_open("simple_memory", O_CREAT | O_RDWR, S_IRWXO);
+	int memFd = shm_open("data_block", O_CREAT | O_RDWR, S_IRWXU);
 	if(memFd == -1) {
 		perror("Can't open file");
 		return 1;
@@ -31,35 +31,17 @@ int main()
 		return -1;
 	}
 
-	/*char buf[GEN_BLOCK_SIZE];
-	int64_t i;
-	for(i=0; i <= 0xffffffff/*max 32bit; i++)
-	{
-		generate((void*)mem->array, i);
-		if(verify(buf) != i)
-		{
-			printf("Failed at %ld\n", i);
-			return 1;
-		}
-		if(i%1000 == 0)
-			printf("passed %lu\n", i);
-	}*/
-
-	mem->pos %= 4096;
-
-	int currVal = mem->array[mem->pos];
+	mem->pos %= 128;
+	uint32_t seed = 0; //for function generate (see gen.h)
 
 	while(true) {
+		generate((void*)mem->buffer[mem->pos], seed);
+		printf("Generate data block: %ld\n", mem->pos);
 		mem->pos++;
-		mem->pos %= 4096;
+		mem->pos %= 128;
 
-		mem->array[mem->pos] = currVal;
-		generate((void*)mem->array, mem->pos);
-		printf("==%ld==\n", mem->pos);
-
-		currVal++;
-
-		if(mem->pos % 512 == 0) {
+		seed++;
+		if(mem->pos % 10 == 0) { //see 10 data blocks per 1 second
 			sleep(1);
 		}
 	}
