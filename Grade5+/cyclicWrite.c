@@ -41,9 +41,6 @@ int main()
 		mem->pos %= 128;
 
 		seed++;
-		/*if(mem->pos % 10 == 0) { //see 10 data blocks per 1 second
-			sleep(1);
-		}*/
 	}
 
 	return 0;
