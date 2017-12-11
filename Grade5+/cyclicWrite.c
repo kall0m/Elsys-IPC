@@ -36,7 +36,7 @@ int main()
 
 	while(true) {
 		generate((void*)mem->buffer[mem->pos], seed);
-		
+
 		mem->pos++;
 		mem->pos %= 128;
 

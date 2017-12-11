@@ -23,17 +23,17 @@ int main()
 		return -1;
 	}
 
-	uint64_t pos = (mem->pos + 2048) % 128;
+	uint64_t pos = 0;
 	printf("starting at %ld\n", pos);
 
 	while(true) {
 		if(mem->pos == pos) {
-			sleep(1);
+			usleep(70000);
 			continue;
 		}
 
 		int64_t current_seed = verify((void *)mem->buffer[pos]);
-		if(current_seed == -1){
+		if(current_seed == -1) {
 			break;
 		}
 
