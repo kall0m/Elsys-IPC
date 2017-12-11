@@ -29,7 +29,6 @@ int main()
 
 	while(true) {
 		if(mem->pos == pos) {
-			usleep(70000);
 			continue;
 		}
 
