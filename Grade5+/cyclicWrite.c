@@ -36,10 +36,9 @@ int main()
 	uint32_t seed = 0; //for function generate (see gen.h)
 
 	while(true) {
-		generate((void*)mem->buffer[mem->pos], seed);
+		generate((void*)mem->buffer[mem->pos % 128], seed);
 
 		mem->pos++;
-		mem->pos %= 128; //this has to stay here because first we generate and then we verify; if it is >= 128 -> memory leak
 
 		seed++;
 	}
