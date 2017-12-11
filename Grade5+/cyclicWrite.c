@@ -32,6 +32,8 @@ int main()
 	}
 
 	mem->pos %= 128;
+	//mem->pos = 0;
+
 	uint32_t seed = 0; //for function generate (see gen.h)
 
 	while(true) {
