@@ -37,15 +37,11 @@ int main()
 
 	while(true) {
 		generate((void*)mem->buffer[mem->pos], seed);
-		printf("Generate data block: %ld\n", mem->pos);
+
 		mem->pos++;
 		mem->pos %= 128; //this has to stay here because first we generate and then we verify; if it is >= 128 -> memory leak
 
 		seed++;
-
-		if(mem->pos % 1 == 0) { //see 10 data blocks per 1 second
-			usleep(70000);
-		}
 	}
 
 	return 0;

@@ -42,7 +42,6 @@ int main()
 			break;
 		}
 
-		printf("Parsed and verified data block: %ld\n", pos);
 		pos++;
 	}
 
