@@ -28,17 +28,14 @@ int main()
 
 	while(true) {
 		if(mem->pos == pos) { //process 2 has to find out if process 1 has jumped process 2's position (i.e. p1 has outrunned p2 with one lap of the buffer)
-			sleep(1);
+			//sleep(1);
 			continue;
 		}
 
 		int64_t current_seed = verify((void *)mem->buffer[pos]);
 		if(current_seed == -1){
-			printf("Data block is inconsistent!");
 			break;
 		}
-
-		printf("Parsed and verified data block: %ld\n", pos);
 
 		pos++;
 		pos %= 128;
