@@ -25,7 +25,9 @@ int main()
 
 	uint64_t pos = 0;
 
-	int64_t old_seed = -1;
+	int64_t old_seed;
+	int is_seed = 0;
+
 	printf("starting at %ld\n", pos);
 
 	while(true) {
@@ -42,11 +44,12 @@ int main()
 			break;
 		}
 		
-		if(old_seed + 1 != current_seed) {
+		if(is_seed && old_seed + 1 != current_seed) {
 			break;
 		}
 		
 		old_seed = current_seed;
+		is_seed = 1;
 
 		pos++;
 	}
