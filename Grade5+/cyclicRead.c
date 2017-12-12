@@ -25,6 +25,7 @@ int main()
 
 	uint64_t pos = 0;
 
+	int64_t old_seed = -1;
 	printf("starting at %ld\n", pos);
 
 	while(true) {
@@ -35,11 +36,17 @@ int main()
 		if(pos + 128 <= mem->pos) {
 			break;
 		}
-
+		
 		int64_t current_seed = verify((void *)mem->buffer[pos]);
 		if(current_seed == -1) {
 			break;
 		}
+		
+		if(old_seed + 1 != current_seed) {
+			break;
+		}
+		
+		old_seed = current_seed;
 
 		pos++;
 	}
