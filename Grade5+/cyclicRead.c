@@ -23,7 +23,7 @@ int main()
 		return -1;
 	}
 
-	uint64_t pos = 0;
+	uint64_t pos = mem->pos;
 
 	int64_t old_seed;
 	int is_seed = 0;
